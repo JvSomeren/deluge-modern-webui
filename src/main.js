@@ -32,6 +32,23 @@ Vue.filter( 'etaToString', ( val ) => {
   return val + ' ' + timeUnit;
 } );
 
+Vue.filter( 'downloadRateToString', ( val ) => {
+  if ( !val ) return '';
+  let speedUnit = 'B/s';
+
+  if(val / 1000 > 1) {
+    speedUnit = 'KiB/s';
+    val /= 1000;
+  }
+
+  if(val / 1000 > 1) {
+    speedUnit = 'MiB/s';
+    val /= 1000;
+  }
+
+  return val + ' ' + speedUnit;
+} );
+
 new Vue( {
   router,
   store,
