@@ -14,6 +14,24 @@ Vue.filter( 'round', ( val, decimals = 2 ) => {
   return Math.round( val * d ) / d;
 } );
 
+Vue.filter( 'etaToString', ( val ) => {
+  if ( !val ) return 'ETA unsure';
+
+  let timeUnit = 'seconds';
+
+  if ( val / 60 > 60 ) {
+    timeUnit = 'minutes';
+    val /= 60;
+  }
+
+  if ( val / 60 > 60 ) {
+    timeUnit = 'hours';
+    val /= 60;
+  }
+
+  return val + ' ' + timeUnit;
+} );
+
 new Vue( {
   router,
   store,
