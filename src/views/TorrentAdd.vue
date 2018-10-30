@@ -113,8 +113,7 @@ export default {
           return;
       }
 
-      console.log( 'dispatch' );
-      this.$store.dispatch( 'addTorrent', this.magnetUri, this.fullPath );
+      this.$store.dispatch( 'addTorrent', [ this.magnetUri, this.fullPath ] );
       this.back();
     },
 
