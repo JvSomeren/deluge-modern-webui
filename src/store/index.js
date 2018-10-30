@@ -92,7 +92,7 @@ export default new Vuex.Store( {
     /**
      * Torrents
      */
-    addTorrent( { dispatch }, magnetUri, path ) {
+    addTorrent( { dispatch }, [ magnetUri, path ] ) {
       request( 'webapi.add_torrent', [ magnetUri, {
         'download_location': '/mnt/ext-hdd/plex/',
         'move_completed_path': path
@@ -105,7 +105,7 @@ export default new Vuex.Store( {
         } )
     },
 
-    removeTorrent( { dispatch }, torrentHash, deleteTorrentData = false ) {
+    removeTorrent( { dispatch }, [ torrentHash, deleteTorrentData = false ] ) {
       // second parameter defines if data should be deleted from disk
       request( 'webapi.remove_torrent', [ torrentHash, deleteTorrentData ] )
         .then( res => {
