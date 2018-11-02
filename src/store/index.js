@@ -118,7 +118,7 @@ export default new Vuex.Store( {
 
     removeAllTorrents( { state, dispatch }, deleteTorrentData = false ) {
       for ( let torrent in state.torrents ) {
-        dispatch( 'removeTorrent', torrent, deleteTorrentData );
+        dispatch( 'removeTorrent', [ torrent, deleteTorrentData ] );
       }
     },
 
@@ -178,10 +178,6 @@ export default new Vuex.Store( {
     },
   },
   mutations: {
-    'AUTH_LOGIN'( state ) {
-      state.authenticated = true;
-    },
-
     'AUTH_SESSION'( state, res ) {
       state.authenticated = res.result;
     },

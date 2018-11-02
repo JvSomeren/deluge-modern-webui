@@ -71,7 +71,7 @@ export default {
     },
 
     removeTorrent() {
-      this.$store.dispatch( 'removeTorrent', this.torrent.hash )
+      this.$store.dispatch( 'removeTorrent', [ this.torrent.hash ] )
         .catch( err => this.$store.dispatch( 'error', err ) );
 
       this.back();
