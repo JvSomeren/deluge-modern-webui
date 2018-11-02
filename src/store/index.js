@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from '@/route'
 
 Vue.use( Vuex );
 
@@ -31,7 +32,11 @@ let request = ( method, params, path = '/json' ) => {
     .then( res => res.json() );
 };
 
-export default new Vuex.Store( {
+let cookieExists = name => {
+  return document.cookie.split( ';' ).filter( ( item ) => item.includes( name + '=' ) ).length;
+};
+
+const store = new Vuex.Store( {
   state: {
     loading: process.env.NODE_ENV === 'production',
     authenticated: !(process.env.NODE_ENV === 'production'),
@@ -40,6 +45,17 @@ export default new Vuex.Store( {
     destinationsTvShows: []
   },
   actions: {
+    init( { dispatch, commit } ) {
+      commit( 'AUTH_SESSION', { result: true } );
+
+      if ( process.env.NODE_ENV === 'production' )
+        dispatch( 'checkSession' )
+          .then( authenticated => {
+            if ( !authenticated )
+              router.push( { name: 'login' } );
+          } );
+    },
+
     /**
      * Auth
      */
@@ -196,4 +212,8 @@ export default new Vuex.Store( {
       state.destinationsTvShows = destinations
     },
   }
-} )
+} );
+
+store.dispatch( 'init' );
+
+export default store;
