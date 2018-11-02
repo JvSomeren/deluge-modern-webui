@@ -40,32 +40,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .torrent {
-    height: 50px;
-    display: flex;
 
-    flex-direction: column;
-    justify-content: center;
-
-    margin: 5px 3px;
-    padding: 2px 5px;
-
-    background: white;
-    border-radius: 3px;
-    color: rgba(0, 0, 0, 0.8);
-
-    overflow: hidden;
-    -ms-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-
-    > p {
-      white-space: nowrap;
-      margin: 0;
-    }
-
-    .status {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.8rem;
-    }
-  }
 </style>

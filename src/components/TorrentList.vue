@@ -32,25 +32,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .torrent-list {
-    height: 100%;
-    display: flex;
 
-    flex-direction: column;
-
-    background: #2c3e50;
-  }
-
-  .no-torrents {
-    width: min-content;
-    align-self: center;
-    padding-left: 25px;
-    padding-right: 25px;
-
-    background: #526476;
-    color: white;
-
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
 </style>

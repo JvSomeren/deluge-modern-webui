@@ -30,10 +30,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .container {
-    height: 100%;
-    display: flex;
 
-    flex-direction: column;
-  }
 </style>

@@ -128,34 +128,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .torrent-add {
-    height: 100%;
-    display: flex;
 
-    flex-direction: column;
-
-    background: #2c3e50;
-
-    textarea {
-      padding-top: 5px;
-      padding-bottom: 5px;
-
-      font-size: 0.8rem;
-    }
-
-    select, input {
-      flex-direction: row;
-
-      font-size: 1rem;
-    }
-
-    .path {
-      height: fit-content;
-
-      background: #526476;
-      color: white;
-
-      font-weight: bold;
-    }
-  }
 </style>

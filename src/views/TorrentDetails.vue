@@ -95,34 +95,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .progress-bar {
-    height: 6px;
-    width: 100%;
-  }
 
-  .torrent-details {
-    height: 100%;
-    display: flex;
-
-    flex-direction: column;
-    justify-content: flex-start;
-
-    background: #2c3e50;
-  }
-
-  .blue {
-    height: fit-content;
-
-    padding-top: 5px;
-    padding-bottom: 5px;
-
-    background: #526476 !important;
-    color: white !important;
-
-    font-weight: bold;
-
-    span {
-      word-break: break-all;
-    }
-  }
 </style>

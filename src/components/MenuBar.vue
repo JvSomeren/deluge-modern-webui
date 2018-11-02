@@ -40,16 +40,5 @@ export default {
 </script>
 
 <style lang="scss">
-  header {
-    min-height: 60px;
-    display: flex;
 
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-    padding: 0 5px;
-
-    background: #42b983;
-  }
 </style>
