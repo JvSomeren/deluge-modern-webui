@@ -32,6 +32,20 @@ let request = ( method, params, path = '/json' ) => {
     .then( res => res.json() );
 };
 
+const refreshRequest = ( libraryId ) => {
+  const plexToken = '***REMOVED***';
+  const baseUrl = '***REMOVED***';
+  const path = `/library/sections/${libraryId}/refresh?X-Plex-Token=${plexToken}`;
+
+  if ( !(process.env.NODE_ENV === 'production') ) {
+    return new Promise( resolve => {
+      resolve( {} );
+    } );
+  }
+
+  return fetch( baseUrl + path);
+}
+
 let cookieExists = name => {
   return document.cookie.split( ';' ).filter( ( item ) => item.includes( name + '=' ) ).length;
 };
@@ -186,6 +200,10 @@ const store = new Vuex.Store( {
         .then( res => {
           commit( 'TORRENT_SET_DESTINATIONS', res.result );
         } );
+    },
+
+    refreshLibrary( {}, libraryId ) {
+      return refreshRequest( libraryId );
     },
 
     error( err ) {

@@ -5,6 +5,8 @@
     <MenuButton icon="pause" text="Pause all" @click.native="pauseAllTorrents"></MenuButton>
     <MenuButton icon="play_arrow" text="Resume all" @click.native="resumeAllTorrents"></MenuButton>
     <MenuButton icon="remove" text="Remove all" @click.native="removeAllTorrents"></MenuButton>
+    <MenuButton icon="sync" text="Movies" @click.native="refreshLibrary( 1 )"></MenuButton>
+    <MenuButton icon="sync" text="TV Shows" @click.native="refreshLibrary( 2 )"></MenuButton>
   </header>
 </template>
 
@@ -33,6 +35,11 @@ export default {
 
     removeAllTorrents() {
       this.$store.dispatch( 'removeAllTorrents' )
+        .catch( err => this.$store.dispatch( 'error', err ) );
+    },
+
+    refreshLibrary( libraryId ) {
+      this.$store.dispatch( 'refreshLibrary', libraryId )
         .catch( err => this.$store.dispatch( 'error', err ) );
     },
   }
