@@ -7,6 +7,7 @@
     </header>
     <div class="torrent-add">
       <textarea rows="5" class="torrent" placeholder="MagnetUri"
+                @change="onChange"
                 v-model="magnetUri"></textarea>
 
       <div class="torrent path">
@@ -112,6 +113,16 @@ export default {
     ] ),
   },
   methods: {
+    onChange() {
+      if ( !this.torrent )
+        return;
+
+      if ( this.destinationsTvShows.indexOf( '/' + this.torrent.show ) !== -1 )
+        this.path.show = '/' + this.torrent.show;
+
+      this.path.season = '/season-' + this.torrent.season;
+    },
+
     addTorrent() {
       if ( this.magnetUri === '' )
         return;
