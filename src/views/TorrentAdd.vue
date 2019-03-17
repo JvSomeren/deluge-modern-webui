@@ -93,6 +93,19 @@ export default {
       return basePath + this.extendedPath;
     },
 
+    torrent() {
+      const matches = this.magnetUri.match( /dn=(.+)s(\d{1,2})e(\d{1,2})/i );
+
+      if ( !matches )
+        return false;
+
+      return {
+        show: matches[1].replace( /\./g, ' ' ).trim(),
+        season: Number(matches[2]),
+        episode: Number(matches[3])
+      };
+    },
+
     ...mapState( [
       'destinations',
       'destinationsTvShows',
