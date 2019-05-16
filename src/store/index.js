@@ -8,7 +8,7 @@ Vue.use( Vuex );
 /* eslint-disable */
 
 let request = ( method, params, path = '/json' ) => {
-  const baseUrl = '***REMOVED***';
+  const baseUrl = process.env.DELUGE_API_URL;
   const headers = new Headers( {
     'Accepts': 'application/json',
     'Content-Type': 'application/json'
@@ -33,8 +33,8 @@ let request = ( method, params, path = '/json' ) => {
 };
 
 const refreshRequest = ( libraryId ) => {
-  const plexToken = '***REMOVED***';
-  const baseUrl = '***REMOVED***';
+  const plexToken = process.env.PLEX_TOKEN;
+  const baseUrl = process.env.PLEX_URL;
   const path = `/library/sections/${libraryId}/refresh?X-Plex-Token=${plexToken}`;
 
   if ( !(process.env.NODE_ENV === 'production') ) {
